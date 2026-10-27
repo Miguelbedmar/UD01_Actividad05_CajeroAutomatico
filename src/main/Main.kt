@@ -1,13 +1,13 @@
 package main
 import modelo.Usuario
-import java.io.EOFException
 import java.util.Scanner
 import controlador.Cajero
 import controlador.RESET
 import controlador.ROJO
+import java.util.Locale
 import java.util.InputMismatchException
 
-val sc=  Scanner(System.`in`)
+val sc=  Scanner(System.`in`).useLocale(Locale.US)
 private val Usuario = Usuario("", 500.0)
 private val cajero=Cajero(Usuario)
 //Colores mensaje Errores:
