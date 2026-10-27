@@ -3,6 +3,10 @@ import modelo.Usuario
 import java.io.EOFException
 import java.util.Scanner
 import controlador.Cajero
+import controlador.RESET
+import controlador.ROJO
+import java.util.InputMismatchException
+
 val sc=  Scanner(System.`in`)
 private val Usuario = Usuario("", 500.0)
 private val cajero=Cajero()
@@ -13,43 +17,48 @@ val ROJO="0xfff44336" // Creamos una variable con el nombre del color  para perz
 
 fun pedidaDatos(): Double{
     var cantidad=0.0
-    try {
-        println("Ingrese la cantidad de dinero que dese")
-        cantidad = sc.nextDouble()
-        cajero.ingresarDinero(cantidad)
-    }catch (e: IllegalAccessError){
-        println(ROJO+"ERROR!: VALOR INTRODUCIDO NO VÁLIDO")
-    }
-    return cantidad
+   while (true) {
+       try {
+           println("Ingrese la cantidad de dinero ")
+           cantidad = sc.nextDouble()
+           return cantidad
+       } catch (e: InputMismatchException) {
+           println("${ROJO} ERROR!: VALOR INTRODUCIDO NO VÁLIDO$")
+           sc.next()
+       }
+   }
 }
+fun pedidaNombreUsuario(){
+    var salir=false
+    while (!salir){
+        try {
+            print("Ingrese su nombre ")
+            val nombre =  sc.nextLine().trim()
 
+            if (nombre.isEmpty()){
+                print("${ROJO}El nombre no debe de estar vacio$RESET")
+            }else {
+                Usuario.setNombre(nombre)
+                return
+            }
+        }catch (e:NoSuchElementException){
+            print("${ROJO} ERROR!: Has salido fuera del fichero")
+            salir=true
+        }catch (e: IllegalAccessError){
+            print("${ROJO} ERROR! Valor introducido no válido")
+        }
+    }
+}
 
 fun menuCajero(){
 var salir=false
 
     do {
-        try {
-            print("Ingrese su nombre ")
-          var nombre =  sc.nextLine()
-
-            if (nombre.isEmpty()){
-                 print("El nombre no debe de estar vacio")
-                continue
-            }
-                Usuario.setNombre(nombre)
-
-
-        }catch (e:EOFException){
-                print(ROJO+"ERROR!: Has salido fuera del fichero")
-                salir=false
-        }catch (e: IllegalAccessError){
-                print(ROJO+"ERROR! Valor introducido no válido")
-        }
-
+        pedidaNombreUsuario()
         try {
             println("<=====CAJERO AUTOMÁTICO========>")
             println("<=======BIENVENIDO: ${Usuario.getNombre()} ----===========>")
-            println("<======= 1.Consultar saldo========>")
+            println("<=======1. Consultar saldo========>")
             println("<=======2. Ingresar dinero====>")
             println("<=======3. Retirar dinero========>")
             println("<=======4. Salir==>")
@@ -59,13 +68,16 @@ var salir=false
                 println("Error: La opción seleccionada no está disponible")
                 continue
             }
-            when(val opcion = sc.nextInt()){
+            val opcion = sc.nextInt()
+            when(opcion){
                 1->cajero.mostrarSaldo()
                 2->{
-                    pedidaDatos()
+                   val cantidad= pedidaDatos()
+                        cajero.ingresarDinero(cantidad)
                 }
                 3-> {
-                    pedidaDatos()
+                   val cantidad=pedidaDatos()
+                    cajero.retirarDinero(cantidad)
                 }
                 4-> {
                     salir=true
@@ -79,10 +91,11 @@ var salir=false
 
 
         }catch (ex: Exception){
-            println(ROJO+"ERROR! Valor inválido detectado")
+            println("${ROJO} ERROR! Valor inválido detectado $RESET")
+        }catch ( e:NoSuchElementException){
+            println("${ROJO} ERROR! ERROR!: Has salido fuera del fichero $RESET ")
+            salir=true
         }
-
-
 
     }while (!salir)
 }
