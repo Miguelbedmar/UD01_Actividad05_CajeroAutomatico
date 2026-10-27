@@ -14,7 +14,7 @@ val ROJO="0xfff44336" // Creamos una variable con el nombre del color  para perz
 fun pedidaDatos(): Double{
     var cantidad=0.0
     try {
-        println("Ingrese la cantidad de dinero que desee")
+        println("Ingrese la cantidad de dinero que dese")
         cantidad = sc.nextDouble()
         cajero.ingresarDinero(cantidad)
     }catch (e: IllegalAccessError){
@@ -62,10 +62,10 @@ var salir=false
             when(val opcion = sc.nextInt()){
                 1->cajero.mostrarSaldo()
                 2->{
-                    cajero.ingresarDinero(pedidaDatos())
+                    pedidaDatos()
                 }
                 3-> {
-                    cajero.retirarDinero(pedidaDatos())
+                    pedidaDatos()
                 }
                 4-> {
                     salir=true
