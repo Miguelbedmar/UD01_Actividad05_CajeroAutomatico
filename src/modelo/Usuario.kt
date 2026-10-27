@@ -25,9 +25,12 @@ class Usuario {
     fun setSaldo(saldo: Double) {
         this.saldo = saldo
     }
+    // Metodo para modificar el saldo
+    fun modificaSaldo(cantidad: Double){
+        saldo +=cantidad
+    }
 
     //TOSTRING
-
     override fun toString(): String {
         return "Usuario(nombre='$nombre', saldo=$saldo)"
     }
