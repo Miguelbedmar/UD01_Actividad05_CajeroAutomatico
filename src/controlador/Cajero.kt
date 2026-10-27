@@ -13,8 +13,11 @@ class Cajero {
     fun mostrarSaldo(){
     println("El saldo actual de $nombre,es $saldo\n")
 
-        if (saldo<=50){
-            println("ALERTA! SALDO BAJO")
+        if (saldo<=50.0){ // Comprobamos si el saldo actual del usuario es inferior a 50
+            println(ROJO+"ALERTA! SALDO BAJO")
+        }
+        if(saldo<=0.0){
+            println(ROJO+"ALERTA! NO HAY SALDO DISPONIBLE")
         }
     }
 
@@ -30,7 +33,12 @@ class Cajero {
     }
 
     fun retirarDinero(cantidad: Double){
-
+        if(cantidad==0.0){
+            print(ROJO+"No puedes Retirar , No hay saldo Disponible")
+        }else{
+            usuario.modificaSaldo(-cantidad)
+            print("Has retirado una cantidad de $cantidad €")
+        }
 
     }
 }

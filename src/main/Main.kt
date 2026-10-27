@@ -2,16 +2,25 @@ package main
 import modelo.Usuario
 import java.io.EOFException
 import java.util.Scanner
-
+import controlador.Cajero
 val sc=  Scanner(System.`in`)
 private val Usuario = Usuario("", 500.0)
-
+private val cajero=Cajero()
 //Colores mensaje Errores:
 val ROJO="0xfff44336" // Creamos una variable con el nombre del color  para perzonalizar los mensajes de errores
 
 
-fun main() {
-    println("CAJERO AUTOMÁTICO")
+
+fun pedidaDatos(): Double{
+    var cantidad=0.0
+    try {
+        println("Ingrese la cantidad de dinero que desee")
+        cantidad = sc.nextDouble()
+        cajero.ingresarDinero(cantidad)
+    }catch (e: IllegalAccessError){
+        println(ROJO+"ERROR!: VALOR INTRODUCIDO NO VÁLIDO")
+    }
+    return cantidad
 }
 
 
@@ -50,8 +59,24 @@ var salir=false
                 println("Error: La opción seleccionada no está disponible")
                 continue
             }
+            when(val opcion = sc.nextInt()){
+                1->cajero.mostrarSaldo()
+                2->{
+                    cajero.ingresarDinero(pedidaDatos())
+                }
+                3-> {
+                    cajero.retirarDinero(pedidaDatos())
+                }
+                4-> {
+                    salir=true
+                    println("Has salido del programa ")
+                }
 
-            
+                else -> println("Opción introducida no disponible.")
+
+
+            }
+
 
         }catch (ex: Exception){
             println(ROJO+"ERROR! Valor inválido detectado")
@@ -60,5 +85,7 @@ var salir=false
 
 
     }while (!salir)
-
+}
+fun main() {
+    menuCajero()
 }
