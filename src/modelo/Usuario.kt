@@ -31,5 +31,5 @@ class Usuario {
     override fun toString(): String {
         return "Usuario(nombre='$nombre', saldo=$saldo)"
     }
-    
+
 }

@@ -1,7 +1,60 @@
 package main
+import modelo.Usuario
+import java.io.EOFException
+import java.util.Scanner
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+val sc=  Scanner(System.`in`)
+
+//Colores mensaje Errores:
+val ROJO="0xfff44336" // Creamos una variable con el nombre del color  para perzonalizar los mensajes de errores
+
+
 fun main() {
     println("CAJERO AUTOMÁTICO")
+}
+
+
+fun menuCajero(){
+var salir=false
+
+    do {
+        try {
+            print("Ingrese su nombre ")
+          var nombre =  sc.nextLine()
+
+            if (nombre.isEmpty()){
+                 print("El nombre no debe de estar vacio")
+                continue
+            }
+        }catch (e:EOFException){
+                print(ROJO+"ERROR!: Has salido fuera del fichero")
+                salir=false
+        }catch (e: IllegalAccessError){
+                print(ROJO+"ERROR! Valor introducido no válido")
+        }
+
+        try {
+            println("<=====CAJERO AUTOMÁTICO========>")
+            println("<=======BIENVENIDO ----===========>")
+            println("<======= 1.Consultar saldo========>")
+            println("<=======2. Ingresar dinero====>")
+            println("<=======3. Retirar dinero========>")
+            println("<=======4. Salir==>")
+            println("<=======Seleccione una opción==========>")
+            if(!sc.hasNextInt()) {
+                sc.next()
+                println("Error: La opción seleccionada no está disponible")
+                continue
+            }
+
+
+
+        }catch (ex: Exception){
+            println(ROJO+"ERROR! Valor inválido detectado")
+        }
+
+
+
+    }while (!salir)
+
 }
