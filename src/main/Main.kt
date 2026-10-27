@@ -14,7 +14,10 @@ private val cajero=Cajero(Usuario)
 
 
 
-
+/**La funcion pedidaDatos evita una duplicación de codigo
+ * en las opciones 2 y 3 ademas de que siempre que el
+ * usuario ingrese un valor no valido , tendrá la opcion de
+ * volver a ingresarlo**/
 fun pedidaDatos(): Double{
     var cantidad=0.0
    while (true) {
@@ -23,11 +26,12 @@ fun pedidaDatos(): Double{
            cantidad = sc.nextDouble()
            return cantidad
        } catch (e: InputMismatchException) {
-           println("${ROJO} ERROR!: VALOR INTRODUCIDO NO VÁLIDO$")
+           println("${ROJO} ERROR!: VALOR INTRODUCIDO NO VÁLIDO $RESET")
            sc.next()
        }
    }
 }
+//Pedimos el nombre al usuario para mejorar la experiencia del programa
 fun pedidaNombreUsuario(){
     var salir=false
     while (!salir){

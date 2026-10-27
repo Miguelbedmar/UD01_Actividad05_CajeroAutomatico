@@ -31,7 +31,7 @@ class Cajero( private val usuario :Usuario) {
             print("${ROJO}No puedes ingresar cero como cantidad $RESET.")
         }else{
             usuario.modificaSaldo(cantidad)
-            print("Has ingresado una cantidad de $cantidad €")
+            print("Has ingresado una cantidad de $cantidad €\n")
         }
     }
     /**
@@ -48,7 +48,7 @@ class Cajero( private val usuario :Usuario) {
             println("${ROJO} ERROR! Fondos insuficientes! $RESET")
         }else{
             usuario.modificaSaldo(-cantidad)
-            println("Has retirado una cantidad de $cantidad €")
+            println("Has retirado una cantidad de $cantidad € \n")
         }
 
 
