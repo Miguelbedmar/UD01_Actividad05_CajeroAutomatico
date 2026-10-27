@@ -24,7 +24,18 @@ Para el correcto desarrollo el proyecto se desarrollara en siete fases que será
 -   FASE 7: Control de Errores.
 
 # 🏗️ EStructura del proyecto.
+```
+CajeroAutomaticoKotlin/
+├── .idea/                 
+├── src/                   
+│   ├── controlador/       
+│   ├── main/             
+│   └── modelo/            
+├── .gitignore             
+├── README.md              
+└── UD01_Actividad05_CajeroAutomatico.iml 
 
+```
 
 # 👨‍💻Tecnología 
 - Kotlin
