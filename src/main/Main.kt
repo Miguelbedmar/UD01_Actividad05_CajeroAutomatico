@@ -4,6 +4,7 @@ import java.io.EOFException
 import java.util.Scanner
 
 val sc=  Scanner(System.`in`)
+private val Usuario = Usuario("", 500.0)
 
 //Colores mensaje Errores:
 val ROJO="0xfff44336" // Creamos una variable con el nombre del color  para perzonalizar los mensajes de errores
@@ -26,6 +27,9 @@ var salir=false
                  print("El nombre no debe de estar vacio")
                 continue
             }
+                Usuario.setNombre(nombre)
+
+
         }catch (e:EOFException){
                 print(ROJO+"ERROR!: Has salido fuera del fichero")
                 salir=false
@@ -35,7 +39,7 @@ var salir=false
 
         try {
             println("<=====CAJERO AUTOMÁTICO========>")
-            println("<=======BIENVENIDO ----===========>")
+            println("<=======BIENVENIDO: ${Usuario.getNombre()} ----===========>")
             println("<======= 1.Consultar saldo========>")
             println("<=======2. Ingresar dinero====>")
             println("<=======3. Retirar dinero========>")
