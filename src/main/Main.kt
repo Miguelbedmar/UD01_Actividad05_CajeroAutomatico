@@ -11,7 +11,7 @@ val sc=  Scanner(System.`in`)
 private val Usuario = Usuario("", 500.0)
 private val cajero=Cajero(Usuario)
 //Colores mensaje Errores:
-val ROJO="0xfff44336" // Creamos una variable con el nombre del color  para perzonalizar los mensajes de errores
+
 
 
 
