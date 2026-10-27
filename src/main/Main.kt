@@ -55,7 +55,7 @@ var salir=false
     pedidaNombreUsuario()
     do {
         try {
-            println("<=====CAJERO AUTOMÁTICO========>")
+            println("<=====CAJERO AUTOMÁTICO========>\n")
             println("<=======BIENVENIDO: ${Usuario.getNombre()} ----===========>")
             println("<=======1. Consultar saldo========>")
             println("<=======2. Ingresar dinero====>")
@@ -80,7 +80,8 @@ var salir=false
                 }
                 4-> {
                     salir=true
-                    println("Has salido del programa ")
+                    println("Vuelve pronto ${Usuario.getNombre()}")
+                    println("Has salido del programa....")
                 }
 
                 else -> println("Opción introducida no disponible.")
