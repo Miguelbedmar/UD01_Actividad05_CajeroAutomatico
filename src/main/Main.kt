@@ -39,10 +39,10 @@ fun pedidaNombreUsuario(){
             print("Ingrese su nombre ")
             val nombre =  sc.nextLine().trim()
 
-            if (nombre.isEmpty()){
+            if (nombre.isEmpty()){ // Comprobamos si el nombre está vacio
                 print("${ROJO}El nombre no debe de estar vacio$RESET")
             }else {
-                Usuario.setNombre(nombre)
+                Usuario.setNombre(nombre) // Si el pasa las validaciones registramos el nombre de nuestro usuario.
                 return
             }
         }catch (e:NoSuchElementException){
@@ -84,7 +84,7 @@ var salir=false
                 }
                 4-> {
                     salir=true
-                    println("Vuelve pronto ${Usuario.getNombre()}")
+                    println("Vuelve pronto ${Usuario.getNombre()}") // Despedimos al usuario
                     println("Has salido del programa....")
                 }
 
@@ -103,6 +103,7 @@ var salir=false
 
     }while (!salir)
 }
+// PROGRAMA PRINCIPAL.
 fun main() {
     menuCajero()
 }

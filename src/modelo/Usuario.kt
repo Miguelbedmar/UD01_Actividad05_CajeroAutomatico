@@ -25,7 +25,9 @@ class Usuario {
     fun setSaldo(saldo: Double) {
         this.saldo = saldo
     }
-    // Metodo para modificar el saldo
+    /**Como el atributo de saldo tiene un modificador privado
+     * Necesitamos de un metodo publico para  realizar cualquier
+     * modificación**/
     fun modificaSaldo(cantidad: Double){
         saldo +=cantidad
     }
