@@ -20,7 +20,10 @@ class Cajero( private val usuario :Usuario) {
             println("${ROJO}ALERTA! NO HAY SALDO DISPONIBLE $RESET")
         }
     }
-
+    /** La función ingresarDinero se encarga  de comprobar  si la cantidad es menor  que cero
+     * en ese caso saltara un mensaje de error lo mismo si la cantidad es 0
+     * Si no se cumple ninguna condición entonces se llama al metodo modificar saldo  de la clase modelo Usuario
+     * para sumarle la cantidad ingresada */
     fun ingresarDinero(cantidad: Double){
         if(cantidad<0.0){
             println("${ROJO}No puedes ingresar una cantidad  negativa $RESET")
@@ -31,6 +34,12 @@ class Cajero( private val usuario :Usuario) {
             print("Has ingresado una cantidad de $cantidad €")
         }
     }
+    /**
+     * La función retirarDinero tiene la misma responsabilidad que ingresarDinero
+     * Pero  con la diferencia de que comprueba que la cantidad no sea superior
+     * al saldo actual  si se cumple está condición entonces se imprimira un mensaje
+     * de error. Si no se cumple ninguna entonces se llama a modificar saldo pero
+     * con la cantidad en negativa para realizar la operación correspondiente.**/
 
     fun retirarDinero(cantidad: Double){
         if(cantidad<=0.0){

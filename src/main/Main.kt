@@ -52,9 +52,8 @@ fun pedidaNombreUsuario(){
 
 fun menuCajero(){
 var salir=false
-
+    pedidaNombreUsuario()
     do {
-        pedidaNombreUsuario()
         try {
             println("<=====CAJERO AUTOMÁTICO========>")
             println("<=======BIENVENIDO: ${Usuario.getNombre()} ----===========>")
