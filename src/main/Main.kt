@@ -51,7 +51,7 @@ var salir=false
                 continue
             }
 
-
+            
 
         }catch (ex: Exception){
             println(ROJO+"ERROR! Valor inválido detectado")
